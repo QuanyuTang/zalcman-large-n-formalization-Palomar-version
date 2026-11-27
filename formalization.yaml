@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "The Zalcman inequality for sufficiently large indices"
+  description: >-
+    A Lean 4 formalization of the Zalcman coefficient inequality for all
+    sufficiently large indices, with equality precisely at Koebe rotations.
+    A single threshold works for the entire normalized univalent class.
+  authors:
+    - "Yuyam Cheung"
+    - "Tao Hu"
+    - "Quanyu Tang"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Quanyu Tang"
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C50", "30C55"]
+
+sources:
+  - title: "The Zalcman inequality for sufficiently large indices: a proof in definition–theorem–proof form"
+    authors:
+      - "Yuyam Cheung"
+      - "Tao Hu"
+      - "Quanyu Tang"
+    type: "unpublished manuscript"
+    location: "Main theorem"
+    relationship: "formalizes"
+
+status:
+  scope: >-
+    The formalization proves the existence of an absolute natural-number
+    threshold at least three, the coefficient inequality above that threshold,
+    and the equality characterization on the disk. It includes the analytic
+    and quantitative coefficient estimates used to derive these conclusions.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: []
+      framework: "OpenAI Codex"
+      tool_setup: "Codex developed the proofs with Lean 4 and Mathlib using local compilation and axiom audits."
+      cost:
+        wall_time: "Not tracked"
+        spend_usd: "Not tracked"
+        hardware: "Windows development machine and GitHub-hosted Linux CI"
+      prompting_notes: "The authors supplied the original informal proof and its references."
+  notes: "Codex formalized the authors' original informal proof, including its equality characterization."
+
+fidelity:
+  divergences: >-
+    Lean represents a function on the disk by a function on the plane with
+    hypotheses restricted to the disk. Equality with the Koebe rotation is
+    expressed as agreement on the disk. The formal development uses finite
+    unit-driver approximation to obtain the positive Milin representation.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The statement was checked against the source theorem and the completed proof was audited for axiom dependencies."
+
+alignment:
+  namespace: "Zalcman"
+  statements:
+    - source: "Main theorem (thm:main)"
+      lean: "Zalcman.main_result"
+      module: "Solution"
+      status: "proved"
+      note: "The quantified threshold and both directions of the equality characterization are included."
+
+acknowledgements: "Lean 4, Mathlib, Codex, and the contributors to the reused Brennan and Crouzeix formalizations."
